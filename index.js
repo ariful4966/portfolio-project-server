@@ -8,7 +8,7 @@ const { projectGetController } = require('./Controller/projectController');
 const { blogGetController } = require('./Controller/blogController');
 const { mailPostController } = require('./Controller/emailController');
 
-const port = 4000;
+const port = process.env.PORT || 4000;
 const app = express();
 app.use(express.json());
 app.use(cors());
