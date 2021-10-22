@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const Project = require("./Models/Project");
 const Blog = require("./Models/Blog");
+const { projectGetController } = require('./Controller/projectController');
+const { blogGetController } = require('./Controller/blogController');
+const { mailPostController } = require('./Controller/emailController');
 
 const port = 4000;
 const app = express();
@@ -17,26 +20,16 @@ mongoose.connect(
   }
 );
 
-app.get("/project", (req, res) => {
-  Project.find({})
-  .catch(err=>{
-      console.log(err);
-  })
-  .then(result=>{
-      res.send(result)
-  })
-
-});
-
-app.get("/blog", (req, res)=>{
-    Blog.find({})
-    .catch(err=>{
-        console.log(err);
-    })
-    .then(result=>{
-        res.send(result)
-    })
+app.get('/', (req, res)=>{
+  res.send('Route is successfully get for data')
 })
+
+app.get("/project", projectGetController );
+
+app.get("/blog", blogGetController)
+
+// send message
+app.post("/send", mailPostController);
 
 app.listen(port, () => {
   console.log("server is running on port " + port);
