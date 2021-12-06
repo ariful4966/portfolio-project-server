@@ -1,7 +1,7 @@
-const Project = require("../Models/Project");
+const Web = require("../Models/Web");
 
 module.exports.projectGetController = async(req, res)=>{
-   await Project.find({})
+   await Web.find({})
     .catch(err=>{
         console.log(err);
     })
@@ -14,5 +14,5 @@ module.exports.projectGetController = async(req, res)=>{
 // Project Post Controller
 
 module.exports.projectPostController = async(req, res)=>{
-
+    
 }

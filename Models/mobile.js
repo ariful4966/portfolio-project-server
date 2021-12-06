@@ -1,18 +1,16 @@
 const { Schema, model } = require("mongoose");
 
-const blogSchma = new Schema({
-
+const mobileSchema = new Schema({
   title: {
     type: String,
     trim: true,
+    required: true,
     maxlength: 200,
-    required: true
   },
-  body:{
+  body: {
     type: String,
     required: true,
-    maxlength: 50000,
-
+    maxlength: 5000
   },
   author: {
     type: Schema.Types.ObjectId,
@@ -32,13 +30,19 @@ const blogSchma = new Schema({
     }
 
   },
-  website: {
-    type: String,
-    require: true,
-    trim: true
+  url:{
+    mobile_url:{
+      type: String,
+      trim: true,
+    },
+    git_url:{
+      type: String,
+      required: true,
+      trimg: true,
+    }
   }
 
-}, {timestamps: true});
-const Blog = model("Blog", blogSchma);
+},{timestamps: true});
 
-module.exports = Blog;
+const Mobile = model("Mobile", mobileSchema);
+module.exports = Mobile;
