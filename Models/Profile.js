@@ -5,7 +5,7 @@ const profileSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required
+        required: true
     },
     name: {
         type: String,
@@ -18,7 +18,7 @@ const profileSchema = new Schema({
         trim: true,
         required: true,
         maxlength: 100
-    },
+    }, 
     bio:{
         type: String,
         trim: true,
@@ -29,17 +29,17 @@ const profileSchema = new Schema({
         delete_url: String
     },
     address: {
-        vill: String,
-        upzila: String,
+        village: String,
+        upozila: String,
         division: String,
-        Country: String
+        country: String
     },
     phone:{
         type: String,
         maxlength: 14,
         minlength: 11,
     },
-    link:{
+    links:{
         web_url: String,
         git_url: String,
         fb_url: String,

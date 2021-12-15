@@ -1,11 +1,11 @@
 const {Schema, model}= require('mongoose');
 
 const userSchema = new Schema({
-    username: {
+    name: {
         type: String,
         trim: true,
         required: true,
-        maxlength: 15
+        maxlength: 50
     },
     email: {
         type: String,
@@ -19,7 +19,29 @@ const userSchema = new Schema({
     profile: {
         type: Schema.Types.ObjectId,
         ref: 'Profile'
-    }
+    },
+    role:{
+        type: String,
+        enum: ['admin', 'user']
+    },
+    webApp: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Web'
+        }
+    ],
+    blog: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Blog'
+        }
+    ],
+    mobile: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Mobile'
+        }
+    ]
 }, {timestamps: true});
 
 const User = model('User', userSchema);

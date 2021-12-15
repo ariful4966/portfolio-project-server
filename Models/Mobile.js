@@ -14,9 +14,14 @@ const mobileSchema = new Schema({
   },
   author: {
     type: Schema.Types.ObjectId,
-    ref: 'Profile',
+    ref: 'user',
     required: true
   },
+  language:[
+    {
+      type: String,
+    }
+  ],
   image: {
     display_url:{
       type: String,
@@ -31,11 +36,11 @@ const mobileSchema = new Schema({
 
   },
   url:{
-    mobile_url:{
+    mobileUrl:{
       type: String,
       trim: true,
     },
-    git_url:{
+    gitUrl:{
       type: String,
       required: true,
       trimg: true,

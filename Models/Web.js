@@ -12,9 +12,14 @@ const webSchema = new Schema({
     required: true,
     maxlength: 5000
   },
+  language:[
+    {
+      type: String,
+    }
+  ],
   author: {
     type: Schema.Types.ObjectId,
-    ref: 'Profile',
+    ref: 'User',
     required: true
   },
   image: {
@@ -31,12 +36,12 @@ const webSchema = new Schema({
 
   },
   url:{
-    web_url:{
+    webUrl:{
       type: String,
       required: true,
       trim: true,
     },
-    git_url:{
+    gitUrl:{
       type: String,
       required: true,
       trimg: true,

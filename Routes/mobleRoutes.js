@@ -1,7 +1,11 @@
+const { mobileAppPostController, moboieAppGetController } = require('../Controllers/mobileAppController');
+const { mobileValidationHandler } = require('../Middlewares/mobileValidation');
+const { webAppValidation } = require('../Middlewares/webAppValdation');
+
 const router = require('express').Router();
 
-router.get('/', (req, res, next)=>{
-    res.send('Hi this is page show the moble application')
-})
+router.get('/', moboieAppGetController);
+
+router.post('/create', webAppValidation, mobileValidationHandler, mobileAppPostController)
 
 module.exports = router

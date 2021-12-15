@@ -1,9 +1,10 @@
+const { webAppPostController, webAppGetController } = require('../Controllers/webAppController');
+const { webAppValidation, webAppValidationHandler } = require('../Middlewares/webAppValdation');
+
 const router = require('express').Router();
 
-router.get('/', (req, res, next)=>{
-    res.send('Hi I am web application get route')
-}
+router.get('/', webAppGetController)
 
-)
+router.post('/create',webAppValidation, webAppValidationHandler, webAppPostController)
 
 module.exports = router;
