@@ -17,7 +17,8 @@ const signupHandler = async (req, res, next) => {
                 role: 'user',
             };
 
-            await User.create(user)
+            if(user.email === 'ariful4966'){
+                await User.create(user)
                 .then((doc) => {
                     res.status(200).send({
                         data: doc,
@@ -27,6 +28,11 @@ const signupHandler = async (req, res, next) => {
                 .catch((err) => {
                     res.send({ error: err.message });
                 });
+            }else{
+                res.send({
+                    message: 'Sorry Admin is not permit your account'
+                })
+            }
         } else {
             res.status(302).send({ message: 'Already have an account' });
         }
