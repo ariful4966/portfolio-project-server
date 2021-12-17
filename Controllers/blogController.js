@@ -66,18 +66,18 @@ module.exports.blogPostController = async (req, res) => {
                         });
                     } else {
                         res.send({
-                            message: 'Data Not Found',
+                            error: 'Data Not Found',
                         });
                     }
                 })
                 .catch((err) => {
                     res.send({
-                        message: err.message,
+                        error: err.message,
                     });
                 });
         } else {
             res.status(400).send({
-                message: 'User Is Not Found',
+                error: 'User Is Not Found',
             });
         }
     } catch (error) {
@@ -88,20 +88,28 @@ module.exports.blogPostController = async (req, res) => {
 };
 // blog Update controller
 module.exports.blogUpdateControl = async (req, res) => {
-    await Blog.findOneAndUpdate().then((err, result) => {
-        if (err) {
-            res.send(err);
-        }
-        res.send(result);
-    });
+    try{
+        await Blog.findOneAndUpdate().then((result) => {
+        
+            res.send(result);
+        });
+    }catch(error){
+        res.send({
+            error: error.message
+        })
+    }
 };
 
 // Blog Delete Controller
 module.exports.blogDeleteController = async (req, res) => {
-    await Blog.findOneAndDelete().then((err, result) => {
-        if (err) {
-            res.send(err);
-        }
+   try{
+    await Blog.findOneAndDelete().then((result) => {
+       
         res.send(result);
     });
+   }catch(error){
+       res.send({
+           error: error.message
+       })
+   }
 };

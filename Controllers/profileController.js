@@ -87,7 +87,7 @@ const profilePostController = async (req, res) => {
                 });
             } else {
               res.send({
-                message: "You have not get profile creation data",
+                error: "You have not get profile creation data",
               });
             }
           })
@@ -98,12 +98,12 @@ const profilePostController = async (req, res) => {
           });
       } else {
         res.status(302).send({
-          message: "You have already have a Profile",
+          error: "You have already have a Profile",
         });
       }
     } else {
       res.status(400).send({
-        message: "You Have not this email to created account",
+        error: "You Have not this email to created account",
       });
     }
   } catch (err) {
@@ -114,7 +114,7 @@ const profilePostController = async (req, res) => {
 };
 
 const profilePic = async (req, res) => {
-  console.log(req.body);
+  
   try {
     const extProfile = await Profile.findOne({ email: req.body.user.email });
     if (extProfile) {
@@ -136,6 +136,10 @@ const profilePic = async (req, res) => {
         .catch((error) => {
           error.message;
         });
+    }else{
+      res.send({
+        error: "Sorry! Your have not any profile exiting"
+      })
     }
   } catch (err) {
     res.send({

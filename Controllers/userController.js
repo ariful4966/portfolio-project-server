@@ -30,11 +30,11 @@ const signupHandler = async (req, res, next) => {
                 });
             }else{
                 res.send({
-                    message: 'Sorry Admin is not permit your account'
+                    error: 'Sorry Admin is not permit your account'
                 })
             }
         } else {
-            res.status(302).send({ message: 'Already have an account' });
+            res.status(302).send({ error: 'Already have an account' });
         }
     } catch (error) {
         res.status(500).send(error.message);
@@ -61,11 +61,11 @@ const loginHandler = async (req, res, next) => {
                     message: 'Login Successfully',
                 });
             } else {
-                res.states(401).send({ message: 'Authentication Faild!' });
+                res.states(401).send({ error: 'Authentication Faild!' });
             }
         } else {
             res.status(401).send({
-                message: 'Authentication Faild!',
+                error: 'Authentication Faild!',
             });
         }
     } catch (error) {

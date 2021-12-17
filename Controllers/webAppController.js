@@ -70,18 +70,18 @@ module.exports.webAppPostController = async (req, res) => {
                         });
                     } else {
                         res.send({
-                            message: 'Data Not Found',
+                            error: 'Data Not Found',
                         });
                     }
                 })
                 .catch((err) => {
                     res.send({
-                        message: err.message,
+                        error: err.message,
                     });
                 });
         } else {
             res.status(400).send({
-                message: 'User Is Not Found',
+                error: 'User Is Not Found',
             });
         }
     } catch (error) {
