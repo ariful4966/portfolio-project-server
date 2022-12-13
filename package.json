@@ -20,9 +20,8 @@
     "nodemailer": "^6.7.0"
   },
   "engines": {
-    "node": "16.13.0",
-    "yarn": "1.22.17",
-    "npm": "8.1.0"
+    "node": "18.12.1",
+    "npm": "8.19.2",
   },
   "devDependencies": {
     "eslint": "^8.2.0",
